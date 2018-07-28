@@ -12,8 +12,8 @@ func main() {
 	}
 
 	fibs := fibonacci(input)
-	for i := range fibs {
-		fmt.Print(fibs[i], " ")
+	for _, v := range fibs {
+		fmt.Print(v, " ")
 	}
 	fmt.Println()
 }
