@@ -3,22 +3,27 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Enter how many primes do you want:")
-	var input int
-	fmt.Scanln(&input)
 
+	input := 0
 	primes := []int{2}
-	input--
+
+	fmt.Println("Enter how many primes do you want:")
+	switch fmt.Scanln(&input); {
+	case input < 1:
+		return
+	default:
+		input--
+		fmt.Print(primes[0], " ")
+		defer fmt.Println()
+	}
+
 	for j := 3; input > 0; j += 2 {
 		if isPrime(j) {
+			fmt.Print(j, " ")
 			primes = append(primes, j)
 			input--
 		}
 	}
-	for i := range primes {
-		fmt.Println(primes[i])
-	}
-	fmt.Println(primes)
 }
 
 func isPrime(input int) bool {
